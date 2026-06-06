@@ -1,0 +1,25 @@
+# Data — large files, not tracked in git
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Output artifacts
+*.png
+*.pdf
