@@ -38,7 +38,8 @@ The research question: **Does the regime matter for hedging? How much more sensi
 │   ├── sensitivity.py                     ← regime-interacted Greek regressions
 │   └── plots.py                           ← shared visualizations
 ├── notebooks/
-│   ├── 00_reference_prior_regression.ipynb ← prior econometrics work (reference only)
+│   ├── archive/
+│   │   └── 00_reference_prior_regression.ipynb ← prior coursework (reference only, not part of the paper)
 │   ├── 01_structural_instability.ipynb    ← Part 1: rolling regressions
 │   ├── 02_regime_classification.ipynb     ← Part 2: HMM (run this first)
 │   └── 03_greek_sensitivity.ipynb         ← Part 3: panel regressions

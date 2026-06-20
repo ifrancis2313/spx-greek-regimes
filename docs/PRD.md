@@ -152,7 +152,7 @@ No tests for `plots.py` — visual correctness verified by inspection.
 ## Further Notes
 
 - **Run order**: Notebook 02 must run before 03 — it produces `data/regime_labels.parquet`. Notebook 01 is independent.
-- **Prior notebook** (`notebooks/00_reference_prior_regression.ipynb`): The original econometrics class project. Regressed monthly avg SPX IV on lagged FF5 factors + crisis dummy. Key findings: IV is AR(1) (β=0.82), market and momentum matter, crisis amplifies the market→IV relationship ~10x. Superseded by Part 1 of this project but kept for reference.
+- **Prior notebook** (`notebooks/archive/00_reference_prior_regression.ipynb`): The original econometrics class project. Regressed monthly avg SPX IV on lagged FF5 factors + crisis dummy. Key findings: IV is AR(1) (β=0.82), market and momentum matter, crisis amplifies the market→IV relationship ~10x. Superseded by Part 1 of this project but kept for reference.
 - **Counterintuitive VRP finding**: VRP is empirically lower during crisis (mean 2.81) than calm (mean 4.16). Realized vol spikes faster than implied vol can reprice. Worth highlighting in Part 2.
 - **FOMC window rationale**: Short-dated options (5–20 DTE) become anomalously liquid around scheduled Fed meetings. Keeping them as a separate robustness test avoids contaminating primary results while still testing whether the event-driven liquidity pattern changes Greek sensitivity estimates.
 - **Feature selection validation**: ANOVA Cohen d against labeled crisis periods — VIX (1.30), realized vol (1.19), opt_spread (0.65), momentum (0.50), VRP (0.26). VIX daily change (0.02) explicitly rejected.

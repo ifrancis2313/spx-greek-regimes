@@ -29,6 +29,8 @@ Three-part paper, each part a notebook backed by tested `src/` modules:
 
 See [`CONTEXT.md`](CONTEXT.md) for the domain glossary, [`docs/PRD.md`](docs/PRD.md) for the full spec, and [`docs/adr/`](docs/adr) for the rationale behind the HMM and panel design choices.
 
+`notebooks/archive/00_reference_prior_regression.ipynb` is earlier coursework that motivated this project (it independently found the same "crisis amplifies market sensitivity" pattern, on a much smaller monthly dataset) — kept for reference, not part of the three-part paper above.
+
 ## How to run
 
 ```bash
