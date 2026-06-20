@@ -86,19 +86,20 @@ def _load_and_filter(path: str, dte_min: int, dte_max: int) -> pd.DataFrame:
 
 
 def _compute_delta_greeks(df: pd.DataFrame) -> pd.DataFrame:
+    prev_date = df.groupby("contract_id")["date"].shift(1)
+    gap_too_large = (df["date"] - prev_date).dt.days > MAX_DATE_GAP_DAYS
+
+    # Once a contract hits a gap > MAX_DATE_GAP_DAYS, no later observation can be
+    # diffed against a clean baseline (its predecessor is the gapped/missing row),
+    # so the gap row and everything after it must be dropped, not just the gap row.
+    truncate = gap_too_large.groupby(df["contract_id"]).cummax()
+    df = df[~truncate].copy()
+
     for greek in GREEKS:
         df[f"d_{greek}"] = df.groupby("contract_id")[greek].diff()
 
     # Drop first observation per contract (no prior day to diff against)
-    df = df.dropna(subset=[f"d_{g}" for g in GREEKS])
-
-    # Drop observations with date gaps > MAX_DATE_GAP_DAYS (non-consecutive days)
-    df["prev_date"] = df.groupby("contract_id")["date"].shift(1)
-    df["date_gap"] = (df["date"] - df["prev_date"]).dt.days
-    df = df[df["date_gap"] <= MAX_DATE_GAP_DAYS].drop(
-        columns=["prev_date", "date_gap"]
-    )
-    return df
+    return df.dropna(subset=[f"d_{g}" for g in GREEKS])
 
 
 def _add_moneyness(df: pd.DataFrame) -> pd.DataFrame:
